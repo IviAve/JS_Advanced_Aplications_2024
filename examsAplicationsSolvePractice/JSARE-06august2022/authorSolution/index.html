@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>ClearCareer</title>
+    <link rel="stylesheet" href="./styles/styles.css" />
+    <script type="module" src="./src/app.js"></script>
+  </head>
+  <body>
+    <div id="wrapper">
+      <header>
+        <!-- Navigation -->
+        <a id="logo" href="/"
+          ><img id="logo-img" src="./images/logo.jpg" alt=""
+        /></a>
+
+        <nav>
+          <div>
+            <a href="/dashboard">Dashboard</a>
+          </div>
+          <!-- Logged-in users -->
+          <div class="user">
+            <a href="/create-offer">Create Offer</a>
+            <a href="javascript:void(0)" id="logoutBtn">Logout</a>
+          </div>
+
+          <!-- Guest users -->
+          <div class="guest">
+            <a href="/login">Login</a>
+            <a href="/register">Register</a>
+          </div>
+        </nav>
+      </header>
+
+      <main id="content"></main>
+    </div>
+    <footer>
+      <p>@ClearCareer</p>
+    </footer>
+  </body>
+</html>
