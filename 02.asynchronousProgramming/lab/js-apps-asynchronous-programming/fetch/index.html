@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fetch</title>
+</head>
+
+<body>
+    <button id="load">Load Repos</button>
+    <div id="res"></div>
+
+    <script>
+        let button = document.querySelector("#load");
+        let resElement = document.getElementById('res');
+        let url = 'https://api.github.com/users/testnakov/repos';
+
+        button.addEventListener('click', () => {
+            console.log('Before fetch');
+
+            fetch(url)
+                .then(res => res.json())
+                .then(data => {
+                    resElement.textContent = data.map(x => x.name).join(' | ');
+                    console.log('Data Returned');
+                })
+                .catch(err => console.log(err));
+            
+            console.log('After fetch');
+        });
+    </script>
+</body>
+
+</html>

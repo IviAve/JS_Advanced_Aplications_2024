@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>My Movies</h1>
+
+    <input type="text" name="title" id="title" />
+    <button id="add-movie">Add</button>
+    <button id="load-movies">Load</button>
+
+    <ul id="movie-list">
+
+    </ul>
+
+    <script>
+        const baseUrl = 'http://localhost:3030/jsonstore'
+        const titleElement = document.getElementById('title');
+        const buttonElement = document.getElementById('load-movies');
+        const addButtonElement = document.getElementById('add-movie');
+        const movieList = document.getElementById('movie-list');
+
+        buttonElement.addEventListener('click', () => {
+            fetch(`${baseUrl}/movies`)
+                .then(res => res.json())
+                .then(data => {
+                    movieList.innerHTML = '';
+
+                    Object.values(data)
+                        .forEach(movie => {
+                            let movieElement = document.createElement('li');
+                            movieElement.textContent = movie.title;
+                            movieList.appendChild(movieElement);
+                        });
+                });
+        });
+        
+        addButtonElement.addEventListener('click', () => {
+            let title = titleElement.value;
+
+            fetch(`${baseUrl}/movies`, {
+                method: 'POST',
+                headers: {
+                    'content-type': 'application/json'
+                },
+                body: JSON.stringify({ title })
+            })
+                .then(res => res.json())
+                .then(movie => {
+                    let movieElement = document.createElement('li');
+                    movieElement.textContent = movie.title;
+                    movieList.appendChild(movieElement);
+                })
+        });
+    </script>
+</body>
+
+</html>
