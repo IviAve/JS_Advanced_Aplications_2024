@@ -1,0 +1,20 @@
+Main requirements for 100%:
+- Static Page
+- Dynamic Navigation (user session)
+- CRUD
+- User session (login/register/logout)
+
+Bonus requirements for > 100%:
+- Custom catalog
+- CRUD for related collection
+- Profile details page
+- Search
+- Pagination
+- Notifications
+
+Requirements for the playwright tests:
+1. Stop the REST service.
+2. Open new CMD terminal.
+3. Type: 'npm run start'.
+4. Open new CMD terminal again.
+5. Type: 'npm run test'.
